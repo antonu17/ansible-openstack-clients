@@ -1,0 +1,10 @@
+---
+- name: install required software
+  become: true
+  apt: name={{item}} state=latest update_cache=true cache_valid_time=3600
+  with_items:
+    - "{{ python_version }}-openstackclient"
+    - "{{ python_version }}-novaclient"
+    - "{{ python_version }}-neutronclient"
+    - "{{ python_version }}-glanceclient"
+    - "{{ python_version }}-cinderclient"
